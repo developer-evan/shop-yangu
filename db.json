@@ -11,6 +11,36 @@
       "name": "buis",
       "description": " \"shops\": [\n    {\n      \"id\": \"709d\",\n      \"name\": \"Paya Shop\",\n      \"description\": \"paya shop shop shop\",\n      \"logo\": \"https://stem.murutechinc.com/images/3.jpg\",\n      \"products\": []\n    }",
       "logo": "https://stem.murutechinc.com/images/3.jpg"
+    },
+    {
+      "id": "d569",
+      "name": "Mut",
+      "description": "1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f",
+      "logo": "https://stem.murutechinc.com/images/3.jpg"
+    },
+    {
+      "id": "6aac",
+      "name": "Evans Mogeni Mokua",
+      "description": "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "products": []
+    },
+    {
+      "id": "8c87",
+      "name": "Evans Mogeni Mokua",
+      "description": "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "products": [
+        {
+            "id": "646d",
+            "name": "JK Saaffaris",
+            "description": "Product Management: \n- Create New Product: \nI need to be able to add new",
+            "price": 200,
+            "stockLevel": 0,
+            "image": "https://stem.murutechinc.com/images/3.jpg",
+            "shopId": "8c87"
+          }
+      ]
     }
   ],
   "products": [
@@ -45,6 +75,15 @@
       "id": "51cf",
       "name": "Evans Mogeni",
       "description": "1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f",
+      "price": 5001,
+      "stockLevel": 0,
+      "image": "https://stem.murutechinc.com/images/3.jpg",
+      "shopId": null
+    },
+    {
+      "id": "7351",
+      "name": "Evans Mogeni Mokua",
+      "description": "1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f",
       "price": 5001,
       "stockLevel": 0,
       "image": "https://stem.murutechinc.com/images/3.jpg",

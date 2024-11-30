@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { shopApi } from "@/lib/api"
 
 const shopFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -30,9 +31,25 @@ export function ShopForm({ initialData, onSubmit, isLoading }: ShopFormProps) {
     },
   })
 
+  const handleSubmit = async (values: ShopFormValues) => {
+    try {
+      const shopData = {
+        name: values.name.trim(),
+        description: values.description.trim(),
+        logo: values.logo.trim(),
+        products: []
+      }
+      
+      await shopApi.create(shopData);
+      onSubmit(shopData);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="name"
