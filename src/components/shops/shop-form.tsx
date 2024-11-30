@@ -19,9 +19,10 @@ interface ShopFormProps {
   initialData?: ShopFormValues
   onSubmit: (data: ShopFormValues) => void
   isLoading?: boolean
+  shopId?: string
 }
 
-export function ShopForm({ initialData, onSubmit, isLoading }: ShopFormProps) {
+export function ShopForm({ initialData, onSubmit, isLoading, shopId }: ShopFormProps) {
   const form = useForm<ShopFormValues>({
     resolver: zodResolver(shopFormSchema),
     defaultValues: initialData || {
@@ -37,11 +38,19 @@ export function ShopForm({ initialData, onSubmit, isLoading }: ShopFormProps) {
         name: values.name.trim(),
         description: values.description.trim(),
         logo: values.logo.trim(),
-        products: []
+        products: initialData?.products || [] // Preserve existing products when editing
       }
       
-      await shopApi.create(shopData);
-      onSubmit(shopData);
+      let response;
+      if (shopId) {
+        // If shopId exists, only update
+        response = await shopApi.update(shopId, shopData);
+      } else {
+        // If no shopId, only create
+        response = await shopApi.create(shopData);
+      }
+      
+      onSubmit(response.data);
     } catch (error) {
       console.error(error)
     }
@@ -94,6 +103,7 @@ export function ShopForm({ initialData, onSubmit, isLoading }: ShopFormProps) {
 
         <Button type="submit" disabled={isLoading}>
           {isLoading ? "Saving..." : "Save Shop"}
+          
         </Button>
       </form>
     </Form>

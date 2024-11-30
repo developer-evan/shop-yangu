@@ -1,9 +1,14 @@
 "use client";
-import { Home, ShoppingCartIcon, Package, Settings } from 'lucide-react'
+import { Home, ShoppingCartIcon, Package, Settings, LogOut, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 
-const Sidebar = () => {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+export default function Sidebar({ onClose }: SidebarProps) {
   const pathname = usePathname()
 
   const navigation = [
@@ -14,31 +19,57 @@ const Sidebar = () => {
   ]
 
   return (
-    <div className="flex h-full w-64 flex-col bg-gray-900">
-      <div className="flex h-16 items-center px-4">
-        <h1 className="text-xl font-bold text-white">ShopYangu Admin</h1>
+    <aside className="h-screen w-[240px] flex flex-col bg-white border-r">
+      {/* Logo Section */}
+      <div className="flex h-16 items-center gap-2 px-6 border-b">
+        <div className="h-7 w-7 rounded-md bg-indigo-600" />
+        <span className="text-lg font-semibold">ShopYangu</span>
+        {/* Close button (Mobile Only) */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="ml-auto lg:hidden"
+          onClick={onClose}
+        >
+          <X className="h-5 w-5" />
+        </Button>
       </div>
-      <nav className="flex-1 space-y-1 px-2 py-4">
+
+      {/* Navigation Section */}
+      <nav className="flex-1 space-y-1 px-3 py-6 overflow-y-auto">
         {navigation.map((item) => {
           const isActive = pathname === item.href
           return (
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center px-2 py-2 text-sm font-medium rounded-md ${
+              className={`flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                 isActive
-                  ? 'bg-gray-800 text-white'
-                  : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  ? 'bg-indigo-50 text-indigo-600'
+                  : 'text-gray-700 hover:bg-gray-50'
               }`}
+              onClick={() => onClose?.()}
             >
-              <item.icon className="mr-3 h-6 w-6" />
+              <item.icon className={`h-5 w-5 ${isActive ? 'text-indigo-600' : 'text-gray-400'}`} />
               {item.name}
             </Link>
           )
         })}
       </nav>
-    </div>
-  )
-}
 
-export default Sidebar 
+      {/* Logout Section */}
+      <div className="border-t p-4">
+        <button
+          onClick={() => {
+            // Add your logout logic here
+            onClose?.()
+          }}
+          className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
+        >
+          <LogOut className="h-5 w-5" />
+          Logout
+        </button>
+      </div>
+    </aside>
+  )
+} 

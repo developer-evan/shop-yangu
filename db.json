@@ -1,22 +1,35 @@
 {
   "shops": [
     {
-      "id": "709d",
-      "name": "Paya Shop",
-      "description": "paya shop shop shop",
-      "logo": "https://stem.murutechinc.com/images/3.jpg"
-    },
-    {
-      "id": "1b6f",
-      "name": "buis",
-      "description": " \"shops\": [\n    {\n      \"id\": \"709d\",\n      \"name\": \"Paya Shop\",\n      \"description\": \"paya shop shop shop\",\n      \"logo\": \"https://stem.murutechinc.com/images/3.jpg\",\n      \"products\": []\n    }",
-      "logo": "https://stem.murutechinc.com/images/3.jpg"
+      "name": "Paya Shopeeeeeeeeee",
+      "description": "paya shop shop shop8888888888888888888888888",
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "products": [
+        {
+          "name": "JK Saaffaris1111111111111111111111111111111111111111111111111111",
+          "description": "- The product list should be paginated to make it easier to browse large product sets.",
+          "price": 200,
+          "stockLevel": 100,
+          "image": "https://stem.murutechinc.com/images/3.jpg",
+          "shopId": "709d"
+        },
+        {
+          "name": "JK Saaffaris00000000000000",
+          "description": "Product Management: \n- Create New Product: \nI need to be able to add new",
+          "price": 200,
+          "stockLevel": 0,
+          "image": "https://stem.murutechinc.com/images/3.jpg",
+          "shopId": "709d"
+        }
+      ],
+      "id": "709d"
     },
     {
       "id": "d569",
-      "name": "Mut",
+      "name": "Mutty",
       "description": "1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f",
-      "logo": "https://stem.murutechinc.com/images/3.jpg"
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "products": []
     },
     {
       "id": "6aac",
@@ -26,41 +39,98 @@
       "products": []
     },
     {
-      "id": "8c87",
       "name": "Evans Mogeni Mokua",
       "description": "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
       "logo": "https://stem.murutechinc.com/images/3.jpg",
       "products": [
         {
-            "id": "646d",
-            "name": "JK Saaffaris",
-            "description": "Product Management: \n- Create New Product: \nI need to be able to add new",
-            "price": 200,
-            "stockLevel": 0,
-            "image": "https://stem.murutechinc.com/images/3.jpg",
-            "shopId": "8c87"
-          }
-      ]
+          "name": "JK Saaffaris",
+          "description": "qwertyuiop qwertyuiop qwertyuiopqwertyuiop qwertyuiop",
+          "price": 2000,
+          "stockLevel": 10,
+          "image": "https://stem.murutechinc.com/images/3.jpg",
+          "shopId": "8c87"
+        },
+        {
+          "name": "JK Saaffaris",
+          "description": "qwertyuiop qwertyuiop qwertyuiopqwertyuiop qwertyuiop",
+          "price": 2000,
+          "stockLevel": 10,
+          "image": "https://stem.murutechinc.com/images/3.jpg",
+          "shopId": "8c87"
+        },
+        {
+          "name": "Evans Mogeni Mokua",
+          "description": "1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f",
+          "price": 5001,
+          "stockLevel": 0,
+          "image": "https://stem.murutechinc.com/images/3.jpg",
+          "shopId": "8c87"
+        }
+      ],
+      "id": "8c87"
+    },
+    {
+      "id": "7166",
+      "name": "Paya Shopeeeeeeeeee",
+      "description": "paya shop shop shop8888888888888888888888888",
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "products": []
+    },
+    {
+      "name": "Evans Mogeni",
+      "description": "qwertyuiop qwertyuiop qwertyuiopqwertyuiop qwertyuiop",
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "products": [],
+      "id": "7c04"
+    },
+    {
+      "id": "b230",
+      "name": "qwertttttttttttttttttttttttttttttt",
+      "description": "qwertyuiop qwertyuiop qwertyuiopqwertyuiop qwertyuiop",
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "products": []
+    },
+    {
+      "id": "a6b3",
+      "name": "qwertttttttttttttttttttttttttttttt",
+      "description": "qwertyuiop qwertyuiop qwertyuiopqwertyuiop qwertyuiop",
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "products": []
+    },
+    {
+      "id": "61a0",
+      "name": "JK Saaffaris",
+      "description": "Evans Mogeni MokuaEvans Mogeni Mokua",
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "products": []
+    },
+    {
+      "id": "61a0",
+      "name": "JK Saaffaris",
+      "description": "Evans Mogeni MokuaEvans Mogeni Mokua",
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "products": []
     }
   ],
   "products": [
     {
-      "id": "646d",
-      "name": "JK Saaffaris",
+      "name": "JK Saaffaris00000000000000",
       "description": "Product Management: \n- Create New Product: \nI need to be able to add new",
       "price": 200,
       "stockLevel": 0,
       "image": "https://stem.murutechinc.com/images/3.jpg",
-      "shopId": null
+      "shopId": "709d",
+      "id": "646d"
     },
     {
-      "id": "26ea",
-      "name": "JK Saaffaris",
+      "name": "JK Saaffaris1111111111111111111111111111111111111111111111111111",
       "description": "- The product list should be paginated to make it easier to browse large product sets.",
       "price": 200,
       "stockLevel": 100,
       "image": "https://stem.murutechinc.com/images/3.jpg",
-      "shopId": 2242
+      "shopId": "709d",
+      "id": "26ea"
     },
     {
       "id": "7f3e",
@@ -72,22 +142,13 @@
       "shopId": null
     },
     {
-      "id": "51cf",
-      "name": "Evans Mogeni",
-      "description": "1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f",
-      "price": 5001,
-      "stockLevel": 0,
-      "image": "https://stem.murutechinc.com/images/3.jpg",
-      "shopId": null
-    },
-    {
-      "id": "7351",
       "name": "Evans Mogeni Mokua",
       "description": "1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f",
       "price": 5001,
       "stockLevel": 0,
       "image": "https://stem.murutechinc.com/images/3.jpg",
-      "shopId": null
+      "shopId": "8c87",
+      "id": "7351"
     }
   ]
 }

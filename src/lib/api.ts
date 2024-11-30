@@ -24,10 +24,10 @@ export interface Product {
 
 export const shopApi = {
   getAll: () => api.get<Shop[]>("/shops"),
-  getById: (id: number) => api.get<Shop>(`/shops/${id}`),
+  getById: (id: string) => api.get<Shop>(`/shops/${id}`),
   create: (data: Omit<Shop, "id">) => api.post<Shop>("/shops", data),
   update: (id: string, data: Partial<Shop>) => api.put<Shop>(`/shops/${id}`, data),
-  delete: (id: number) => api.delete(`/shops/${id}`),
+  delete: (id: string) => api.delete(`/shops/${id}`),
   addProduct: async (shopId: string, product: Omit<Product, 'id'>) => {
     const shop = (await api.get<Shop>(`/shops/${shopId}`)).data;
     const updatedShop = {
@@ -48,9 +48,9 @@ export const shopApi = {
 
 export const productApi = {
   getAll: () => api.get<Product[]>("/products"),
-  getById: (id: number) => api.get<Product>(`/products/${id}`),
+  getById: (id: string) => api.get<Product>(`/products/${id}`),
   create: (data: Omit<Product, "id">) => api.post<Product>("/products", data),
-  update: (id: number, data: Partial<Product>) =>
+  update: (id: string, data: Partial<Product>) =>
     api.put<Product>(`/products/${id}`, data),
-  delete: (id: number) => api.delete(`/products/${id}`),
+  delete: (id: string) => api.delete(`/products/${id}`),
 };
