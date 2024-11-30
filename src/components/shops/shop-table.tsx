@@ -5,61 +5,60 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Edit, Trash2, Eye } from "lucide-react"
-import { Shop } from "@/lib/api"
-import Image from "next/image"
-import { Pagination } from "@/components/ui/pagination"
-import { useState } from "react"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Edit, Trash2, Eye, Search } from "lucide-react";
+import { Shop } from "@/lib/api";
+import Image from "next/image";
+import { Pagination } from "@/components/ui/pagination";
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 interface ShopTableProps {
-  shops: Shop[]
-  onDelete: (id: string) => void
-  onEdit: (shop: Shop) => void
-  onView?: (shop: Shop) => void
+  shops: Shop[];
+  onDelete: (id: string) => void;
+  onEdit: (shop: Shop) => void;
+  onView?: (shop: Shop) => void;
 }
 
-export function ShopTable({ 
-  shops, 
-  onDelete, 
-  onEdit,
-  onView 
-}: ShopTableProps) {
-  const [currentPage, setCurrentPage] = useState(1)
-  const [pageSize, setPageSize] = useState(10)
-  const [searchTerm, setSearchTerm] = useState("")
+export function ShopTable({ shops, onDelete, onEdit, onView }: ShopTableProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Filter shops based on search
-  const filteredShops = shops.filter(shop => 
-    shop.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    shop.description.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+  
+  const filteredShops = shops.filter(
+    (shop) =>
+      shop.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      shop.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-  // Calculate paginated data
-  const startIndex = (currentPage - 1) * pageSize
-  const paginatedShops = filteredShops.slice(startIndex, startIndex + pageSize)
+  const startIndex = (currentPage - 1) * pageSize;
+  const paginatedShops = filteredShops.slice(startIndex, startIndex + pageSize);
 
   return (
     <div className="space-y-4">
-      {/* Search Input */}
-      <div className="flex items-center gap-2">
-        <Input
-          placeholder="Search shops..."
-          value={searchTerm}
-          onChange={(e) => {
-            setSearchTerm(e.target.value)
-            setCurrentPage(1) // Reset to first page on search
-          }}
-          className="max-w-xs"
-        />
+      
+      {/* <div className="flex items-center gap-2"> */}
+      <div className="flex items-center space-x-2">
+        <div className="relative flex-1 max-w-sm">
+          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Search shops..."
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="max-w-xs pl-8"
+          />
+        </div>
       </div>
 
       <div className="rounded-md border">
@@ -83,9 +82,8 @@ export function ShopTable({
                       alt={shop.name}
                       fill
                       className="rounded-md object-cover"
-                      onError={(e) => {
-                        // Fallback for broken images
-                        (e.target as HTMLImageElement).src = '/placeholder.png'
+                      onError={(e) => {                        
+                        (e.target as HTMLImageElement).src = "/placeholder.png";
                       }}
                     />
                   </div>
@@ -146,11 +144,13 @@ export function ShopTable({
             ))}
             {filteredShops.length === 0 && (
               <TableRow>
-                <TableCell 
-                  colSpan={5} 
+                <TableCell
+                  colSpan={5}
                   className="text-center py-6 text-muted-foreground"
                 >
-                  {searchTerm ? "No shops found matching your search" : "No shops found"}
+                  {searchTerm
+                    ? "No shops found matching your search"
+                    : "No shops found"}
                 </TableCell>
               </TableRow>
             )}
@@ -164,10 +164,10 @@ export function ShopTable({
         pageSize={pageSize}
         onPageChange={setCurrentPage}
         onPageSizeChange={(size) => {
-          setPageSize(size)
-          setCurrentPage(1)
+          setPageSize(size);
+          setCurrentPage(1);
         }}
       />
     </div>
-  )
-} 
+  );
+}

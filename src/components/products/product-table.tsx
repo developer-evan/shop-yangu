@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 import {
   Table,
   TableBody,
@@ -6,132 +6,156 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Edit, Trash2, ArrowUpDown } from "lucide-react"
-import { Product, Shop } from "@/lib/api"
-import Image from "next/image"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Edit, Trash2, ArrowUpDown } from "lucide-react";
+import { Product, Shop } from "@/lib/api";
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Pagination } from "@/components/ui/pagination"
+} from "@/components/ui/select";
+import { Pagination } from "@/components/ui/pagination";
 
 interface ProductTableProps {
-  products: Product[]
-  shops: Shop[]
-  onDelete: (id: number) => void
-  onEdit: (product: Product) => void
+  products: Product[];
+  shops: Shop[];
+  onDelete: (id: number) => void;
+  onEdit: (product: Product) => void;
 }
 
-type SortField = 'name' | 'price' | 'stockLevel' | 'shop'
-type SortOrder = 'asc' | 'desc'
+type SortField = "name" | "price" | "stockLevel" | "shop";
+type SortOrder = "asc" | "desc";
 
-export function ProductTable({ products, shops, onDelete, onEdit }: ProductTableProps) {
+export function ProductTable({
+  products,
+  shops,
+  onDelete,
+  onEdit,
+}: ProductTableProps) {
   // Sorting state
-  const [sortField, setSortField] = useState<SortField>('name')
-  const [sortOrder, setSortOrder] = useState<SortOrder>('asc')
-  
+  const [sortField, setSortField] = useState<SortField>("name");
+  const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
+
   // Pagination state
-  const [currentPage, setCurrentPage] = useState(1)
-  const [pageSize, setPageSize] = useState(10)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   // Filter state
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedShop, setSelectedShop] = useState<string>("")
-  const [stockFilter, setStockFilter] = useState<string>("")
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedShop, setSelectedShop] = useState<string>("");
+  const [stockFilter, setStockFilter] = useState<string>("");
 
   const getShopName = (shopId: number) => {
-    return shops?.find(shop => shop.id === shopId)?.name || 'Unknown Shop'
-  }
+    return shops?.find((shop) => shop.id === shopId)?.name || "Unknown Shop";
+  };
 
   const getStockStatus = (level: number) => {
-    if (level === 0) return <Badge variant="destructive">Out of Stock</Badge>
-    if (level <= 5) return <Badge variant="outline">Low Stock</Badge>
-    return <Badge variant="default">In Stock</Badge>
-  }
+    if (level === 0) return <Badge variant="destructive">Out of Stock</Badge>;
+    if (level <= 5) return <Badge variant="outline">Low Stock</Badge>;
+    return (
+      <Badge variant="default" className="bg-green-500">
+        In Stock
+      </Badge>
+    );
+  };
 
   const handleSort = (field: SortField) => {
     if (sortField === field) {
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
     } else {
-      setSortField(field)
-      setSortOrder('asc')
+      setSortField(field);
+      setSortOrder("asc");
     }
-  }
+  };
 
-  // Filter and sort products
   const filteredAndSortedProducts = products
-    .filter(product => {
+    .filter((product) => {
       const matchesSearch = product.name
         .toLowerCase()
-        .includes(searchTerm.toLowerCase())
-      const matchesShop = selectedShop ? product.shopId === Number(selectedShop) : true
+        .includes(searchTerm.toLowerCase());
+      const matchesShop = selectedShop
+        ? product.shopId === Number(selectedShop)
+        : true;
       const matchesStock = () => {
         switch (stockFilter) {
-          case 'out': return product.stockLevel === 0
-          case 'low': return product.stockLevel <= 5 && product.stockLevel > 0
-          case 'in': return product.stockLevel > 5
-          default: return true
+          case "out":
+            return product.stockLevel === 0;
+          case "low":
+            return product.stockLevel <= 5 && product.stockLevel > 0;
+          case "in":
+            return product.stockLevel > 5;
+          default:
+            return true;
         }
-      }
-      return matchesSearch && matchesShop && matchesStock()
+      };
+      return matchesSearch && matchesShop && matchesStock();
     })
     .sort((a, b) => {
-      let compareA: string | number
-      let compareB: string | number
+      let compareA: string | number;
+      let compareB: string | number;
 
       switch (sortField) {
-        case 'name':
-          compareA = a.name.toLowerCase()
-          compareB = b.name.toLowerCase()
-          break
-        case 'price':
-          compareA = a.price
-          compareB = b.price
-          break
-        case 'stockLevel':
-          compareA = a.stockLevel
-          compareB = b.stockLevel
-          break
-        case 'shop':
-          compareA = getShopName(Number(a.shopId)).toLowerCase()
-          compareB = getShopName(Number(b.shopId)).toLowerCase()
-          break
+        case "name":
+          compareA = a.name.toLowerCase();
+          compareB = b.name.toLowerCase();
+          break;
+        case "price":
+          compareA = a.price;
+          compareB = b.price;
+          break;
+        case "stockLevel":
+          compareA = a.stockLevel;
+          compareB = b.stockLevel;
+          break;
+        case "shop":
+          compareA = getShopName(Number(a.shopId)).toLowerCase();
+          compareB = getShopName(Number(b.shopId)).toLowerCase();
+          break;
         default:
-          return 0
+          return 0;
       }
 
-      return sortOrder === 'asc' 
-        ? compareA > compareB ? 1 : -1
-        : compareA < compareB ? 1 : -1
-    })
+      return sortOrder === "asc"
+        ? compareA > compareB
+          ? 1
+          : -1
+        : compareA < compareB
+        ? 1
+        : -1;
+    });
 
   // Paginate products
   const paginatedProducts = filteredAndSortedProducts.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
-  )
+  );
 
-  const SortableHeader = ({ field, children }: { field: SortField, children: React.ReactNode }) => (
+  const SortableHeader = ({
+    field,
+    children,
+  }: {
+    field: SortField;
+    children: React.ReactNode;
+  }) => (
     <TableHead className="cursor-pointer" onClick={() => handleSort(field)}>
       <div className="flex items-center gap-1">
         {children}
         <ArrowUpDown className="h-4 w-4" />
       </div>
     </TableHead>
-  )
+  );
 
   return (
     <div className="space-y-4">
       {/* Filters */}
       <div className="flex gap-4 items-center">
-        <Input
+        {/* <Input
           placeholder="Search products..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -155,12 +179,9 @@ export function ProductTable({ products, shops, onDelete, onEdit }: ProductTable
               </SelectItem>
             ))}
           </SelectContent>
-        </Select>
+        </Select> */}
 
-        <Select
-          value={stockFilter}
-          onValueChange={setStockFilter}
-        >
+        <Select value={stockFilter} onValueChange={setStockFilter}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Filter by stock" />
           </SelectTrigger>
@@ -180,7 +201,8 @@ export function ProductTable({ products, shops, onDelete, onEdit }: ProductTable
             <TableRow>
               <TableHead>Image</TableHead>
               <SortableHeader field="name">Product Name</SortableHeader>
-              <SortableHeader field="shop">Shop</SortableHeader>
+              {/* <SortableHeader field="shop">Shop</SortableHeader> */}
+              <SortableHeader field="shop">Description</SortableHeader>
               <SortableHeader field="price">Price</SortableHeader>
               <SortableHeader field="stockLevel">Stock Level</SortableHeader>
               <TableHead>Status</TableHead>
@@ -201,7 +223,11 @@ export function ProductTable({ products, shops, onDelete, onEdit }: ProductTable
                   </div>
                 </TableCell>
                 <TableCell className="font-medium">{product.name}</TableCell>
-                <TableCell>{getShopName(product.shopId)}</TableCell>
+                {/* <TableCell>{getShopName(product.shopId)}</TableCell> */}
+                <TableCell>
+                  {product.description.split(" ").slice(0, 3).join(" ")}
+                  {product.description.split(" ").length > 3 && "..."}
+                </TableCell>
                 <TableCell>${product.price?.toFixed(2)}</TableCell>
                 <TableCell>{product.stockLevel}</TableCell>
                 <TableCell>{getStockStatus(product.stockLevel)}</TableCell>
@@ -227,8 +253,8 @@ export function ProductTable({ products, shops, onDelete, onEdit }: ProductTable
             ))}
             {paginatedProducts.length === 0 && (
               <TableRow>
-                <TableCell 
-                  colSpan={7} 
+                <TableCell
+                  colSpan={7}
                   className="text-center py-6 text-muted-foreground"
                 >
                   No products found
@@ -246,10 +272,10 @@ export function ProductTable({ products, shops, onDelete, onEdit }: ProductTable
         pageSize={pageSize}
         onPageChange={setCurrentPage}
         onPageSizeChange={(size) => {
-          setPageSize(size)
-          setCurrentPage(1)
+          setPageSize(size);
+          setCurrentPage(1);
         }}
       />
     </div>
-  )
-} 
+  );
+}

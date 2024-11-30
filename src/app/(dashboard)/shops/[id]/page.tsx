@@ -23,7 +23,7 @@ export default function ShopDetailPage() {
 
   const loadShop = async () => {
     try {
-      const response = await shopApi.getById(Number(params.id))
+      const response = await shopApi.getById(params.id)
       setShop(response.data)
     } catch (error) {
       toast({
@@ -37,9 +37,9 @@ export default function ShopDetailPage() {
   const handleUpdate = async (data: Omit<Shop, 'id'>) => {
     setIsLoading(true)
     try {
-      await shopApi.update(Number(params.id), data)
+      await shopApi.update(params.id, data)
       toast({
-        title: "Success",
+        title: "Success", 
         description: "Shop updated successfully",
       })
       router.push('/shops')

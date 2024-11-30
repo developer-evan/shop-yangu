@@ -54,27 +54,27 @@ export default function ProductsPage() {
     }
   };
 
-  const handleCreateProduct = async (data: Omit<Product, 'id'>) => {
-    setIsLoading(true)
+  const handleCreateProduct = async (data: Omit<Product, "id">) => {
+    setIsLoading(true);
     try {
-      const response = await productApi.create(data)
-      await loadData()
-      setIsDialogOpen(false)
+      const response = await productApi.create(data);
+      await loadData();
+      setIsDialogOpen(false);
       toast({
         title: "Success",
         description: "Product created successfully",
-      })
+      });
     } catch (error) {
-      console.error('Error creating product:', error)
+      console.error("Error creating product:", error);
       toast({
         title: "Error",
         description: "Failed to create product",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleUpdateProduct = async (data: Partial<Product>) => {
     try {
@@ -132,7 +132,7 @@ export default function ProductsPage() {
   });
 
   // Add this function to your ProductsPage component
-  const handleBulkDelete = async (ids: number[]) => {
+  const handleBulkDelete = async (ids: string[]) => {
     try {
       await Promise.all(ids.map((id) => productApi.delete(id)));
       loadData();
@@ -148,8 +148,6 @@ export default function ProductsPage() {
       });
     }
   };
-
-  // Update the ProductTable component usage
 
   return (
     <div className="space-y-6">
