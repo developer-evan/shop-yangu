@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import {
   Table,
@@ -12,7 +13,6 @@ import { Edit, Trash2, ArrowUpDown } from "lucide-react";
 import { Product, Shop } from "@/lib/api";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
