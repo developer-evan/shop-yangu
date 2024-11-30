@@ -1,31 +1,30 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  LineChart, 
-  BarChart, 
-  Line, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
+import {
+  LineChart,
+  BarChart,
+  Line,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
   Legend,
-  ResponsiveContainer 
+  ResponsiveContainer,
 } from "recharts";
-import { 
-  ShoppingBag, 
-  Store, 
-  DollarSign, 
+import {
+  ShoppingBag,
+  Store,
+  DollarSign,
   Package,
   TrendingUp,
   TrendingDown,
   LucideIcon,
 } from "lucide-react";
-import { shopApi, productApi} from "@/lib/api";
+import { shopApi, productApi } from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
 
 interface DashboardMetrics {
@@ -51,7 +50,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     loadDashboardData();
-    // Refresh data every 5 minutes
+
     const interval = setInterval(loadDashboardData, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
@@ -66,17 +65,17 @@ export default function DashboardPage() {
       const shops = shopsRes.data;
       const products = productsRes.data;
 
-      // Calculate metrics
-      const totalRevenue = products.reduce((sum, product) => sum + product.price, 0);
-      const lowStockProducts = products.filter(p => p.stockLevel <= 5).length;
+      const totalRevenue = products.reduce(
+        (sum, product) => sum + product.price,
+        0
+      );
+      const lowStockProducts = products.filter((p) => p.stockLevel <= 5).length;
 
-      // Group products by shop
-      const productsByShop = shops.map(shop => ({
+      const productsByShop = shops.map((shop) => ({
         name: shop.name,
-        products: products.filter(p => p.shopId === shop.id).length,
+        products: products.filter((p) => p.shopId === shop.id).length,
       }));
 
-      // Mock recent sales data (replace with real data)
       const recentSales = generateMockSalesData();
 
       setMetrics({
@@ -95,7 +94,6 @@ export default function DashboardPage() {
       });
       console.error(error);
     } finally {
-
     }
   };
 
@@ -145,10 +143,10 @@ export default function DashboardPage() {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Line 
-                    type="monotone" 
-                    dataKey="sales" 
-                    stroke="#8884d8" 
+                  <Line
+                    type="monotone"
+                    dataKey="sales"
+                    stroke="#8884d8"
                     name="Sales"
                   />
                 </LineChart>
@@ -170,11 +168,7 @@ export default function DashboardPage() {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar 
-                    dataKey="products" 
-                    fill="#82ca9d" 
-                    name="Products"
-                  />
+                  <Bar dataKey="products" fill="#82ca9d" name="Products" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -185,27 +179,30 @@ export default function DashboardPage() {
   );
 }
 
-// Helper Components
 interface MetricCardProps {
   title: string;
   value: string | number;
   icon: LucideIcon;
   trend: number;
-  trendColor?: 'green' | 'red';
+  trendColor?: "green" | "red";
 }
 
-function MetricCard({ title, value, icon: Icon, trend, trendColor = 'green' }: MetricCardProps) {
+function MetricCard({
+  title,
+  value,
+  icon: Icon,
+  trend,
+  trendColor = "green",
+}: MetricCardProps) {
   const TrendIcon = trend > 0 ? TrendingUp : TrendingDown;
-  const trendClass = trend > 0 ? 'text-green-500' : 'text-red-500';
+  const trendClass = trend > 0 ? "text-green-500" : "text-red-500";
 
   return (
     <Card>
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-muted-foreground">
-              {title}
-            </p>
+            <p className="text-sm font-medium text-muted-foreground">{title}</p>
             <p className="text-2xl font-bold">{value}</p>
           </div>
           <Icon className="h-8 w-8 text-muted-foreground" />
@@ -221,7 +218,6 @@ function MetricCard({ title, value, icon: Icon, trend, trendColor = 'green' }: M
   );
 }
 
-// Mock data generator
 function generateMockSalesData() {
   const days = 7;
   const today = new Date();
@@ -229,7 +225,7 @@ function generateMockSalesData() {
     const date = new Date(today);
     date.setDate(date.getDate() - (days - i - 1));
     return {
-      date: date.toLocaleDateString('en-US', { weekday: 'short' }),
+      date: date.toLocaleDateString("en-US", { weekday: "short" }),
       sales: Math.floor(Math.random() * 1000) + 500,
     };
   });
