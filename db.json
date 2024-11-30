@@ -1,23 +1,54 @@
 {
   "shops": [
     {
-      "name": "JK Saaffarisp",
-      "description": "evvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv",
-      "logo": "https://stem.murutechinc.com/images/3.jpg",
-      "id": "fb1d"
-    },
-    {
-      "id": "a47a",
-      "name": "JK Saaffarisllllllll",
-      "description": "lliiiiiiiiiiiiiiioooooooo",
+      "id": "709d",
+      "name": "Paya Shop",
+      "description": "paya shop shop shop",
       "logo": "https://stem.murutechinc.com/images/3.jpg"
     },
     {
-      "id": "9b2e",
-      "name": "JK Saaffaris",
-      "description": "dcvvvvvvvvvvvvvvvvvv",
+      "id": "1b6f",
+      "name": "buis",
+      "description": " \"shops\": [\n    {\n      \"id\": \"709d\",\n      \"name\": \"Paya Shop\",\n      \"description\": \"paya shop shop shop\",\n      \"logo\": \"https://stem.murutechinc.com/images/3.jpg\",\n      \"products\": []\n    }",
       "logo": "https://stem.murutechinc.com/images/3.jpg"
     }
   ],
-  "products": []
+  "products": [
+    {
+      "id": "646d",
+      "name": "JK Saaffaris",
+      "description": "Product Management: \n- Create New Product: \nI need to be able to add new",
+      "price": 200,
+      "stockLevel": 0,
+      "image": "https://stem.murutechinc.com/images/3.jpg",
+      "shopId": null
+    },
+    {
+      "id": "26ea",
+      "name": "JK Saaffaris",
+      "description": "- The product list should be paginated to make it easier to browse large product sets.",
+      "price": 200,
+      "stockLevel": 100,
+      "image": "https://stem.murutechinc.com/images/3.jpg",
+      "shopId": 2242
+    },
+    {
+      "id": "7f3e",
+      "name": "JK Saaffaris",
+      "description": "\"shops\": [\n    {\n      \"id\": \"709d\",\n      \"name\": \"Paya Shop\",\n      \"description\": \"paya shop shop shop\",\n      \"logo\": \"https://stem.murutechinc.com/images/3.jpg\",\n      \"products\": []\n    }",
+      "price": 200,
+      "stockLevel": 0,
+      "image": "https://stem.murutechinc.com/images/3.jpg",
+      "shopId": null
+    },
+    {
+      "id": "51cf",
+      "name": "Evans Mogeni",
+      "description": "1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f1b6f",
+      "price": 5001,
+      "stockLevel": 0,
+      "image": "https://stem.murutechinc.com/images/3.jpg",
+      "shopId": null
+    }
+  ]
 }

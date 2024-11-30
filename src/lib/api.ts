@@ -5,30 +5,45 @@ const api = axios.create({
 });
 
 export interface Shop {
-  products: string;
-  id?: number;
+  id: string;
   name: string;
   description: string;
   logo: string;
+  products: Product[];
 }
 
 export interface Product {
-  id?: number;
-  shopId?: number;
+  id?: string;
   name: string;
+  description: string;
   price: number;
   stockLevel: number;
-  description: string;
   image: string;
+  shopId: string;
 }
 
 export const shopApi = {
   getAll: () => api.get<Shop[]>("/shops"),
   getById: (id: number) => api.get<Shop>(`/shops/${id}`),
   create: (data: Omit<Shop, "id">) => api.post<Shop>("/shops", data),
-  update: (id: number, data: Partial<Shop>) =>
-    api.put<Shop>(`/shops/${id}`, data),
+  update: (id: string, data: Partial<Shop>) => api.put<Shop>(`/shops/${id}`, data),
   delete: (id: number) => api.delete(`/shops/${id}`),
+  addProduct: async (shopId: string, product: Omit<Product, 'id'>) => {
+    const shop = (await api.get<Shop>(`/shops/${shopId}`)).data;
+    const updatedShop = {
+      ...shop,
+      products: [...shop.products, { ...product, shopId }]
+    };
+    return api.put<Shop>(`/shops/${shopId}`, updatedShop);
+  },
+  removeProduct: async (shopId: string, productId: string) => {
+    const shop = (await api.get<Shop>(`/shops/${shopId}`)).data;
+    const updatedShop = {
+      ...shop,
+      products: shop.products.filter(p => p.id !== productId)
+    };
+    return api.put<Shop>(`/shops/${shopId}`, updatedShop);
+  }
 };
 
 export const productApi = {
