@@ -85,32 +85,18 @@
       "id": "7c04"
     },
     {
-      "id": "b230",
-      "name": "qwertttttttttttttttttttttttttttttt",
+      "name": "Kiango Shop",
       "description": "qwertyuiop qwertyuiop qwertyuiopqwertyuiop qwertyuiop",
       "logo": "https://stem.murutechinc.com/images/3.jpg",
-      "products": []
+      "products": [],
+      "id": "b230"
     },
     {
-      "id": "a6b3",
-      "name": "qwertttttttttttttttttttttttttttttt",
-      "description": "qwertyuiop qwertyuiop qwertyuiopqwertyuiop qwertyuiop",
-      "logo": "https://stem.murutechinc.com/images/3.jpg",
-      "products": []
-    },
-    {
-      "id": "61a0",
-      "name": "JK Saaffaris",
+      "name": "JK Saaffarisppppppppp",
       "description": "Evans Mogeni MokuaEvans Mogeni Mokua",
       "logo": "https://stem.murutechinc.com/images/3.jpg",
-      "products": []
-    },
-    {
-      "id": "61a0",
-      "name": "JK Saaffaris",
-      "description": "Evans Mogeni MokuaEvans Mogeni Mokua",
-      "logo": "https://stem.murutechinc.com/images/3.jpg",
-      "products": []
+      "products": [],
+      "id": "61a0"
     }
   ],
   "products": [
