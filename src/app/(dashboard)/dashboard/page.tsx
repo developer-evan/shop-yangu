@@ -23,7 +23,7 @@ import {
   TrendingDown,
   LucideIcon,
 } from "lucide-react";
-import { shopApi, productApi, Shop, Product } from "@/lib/api";
+import { shopApi, productApi} from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
 
 interface DashboardMetrics {

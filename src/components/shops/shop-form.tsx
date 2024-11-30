@@ -42,38 +42,38 @@ export function ShopForm({
 
   const handleSubmit = async (values: ShopFormValues) => {
     try {
-      const shopData = {
-        name: values.name.trim(),
-        description: values.description.trim(),
-        logo: values.logo.trim(),
-        products: initialData?.products || []
-      }
-      
-      let response;
-      
       if (initialData?.id) {
         // Update existing shop
-        response = await shopApi.update(initialData.id, {
-          ...shopData,
-          id: initialData.id // Preserve the original ID
+        const response = await shopApi.update(initialData.id, {
+          ...values,
+          id: initialData.id,
+          products: initialData.products || []
         });
+        
         toast({
           title: "Success",
           description: "Shop updated successfully",
         });
+        
+        onSubmit(response.data);
       } else {
         // Create new shop
-        response = await shopApi.create({
-          ...shopData,
+        const shopData = {
+          name: values.name.trim(),
+          description: values.description.trim(),
+          logo: values.logo.trim(),
           products: [] // New shops start with empty products array
-        });
+        };
+        
+        const response = await shopApi.create(shopData);
+        
         toast({
           title: "Success",
           description: "Shop created successfully",
         });
+        
+        onSubmit(response.data);
       }
-      
-      onSubmit(response.data);
     } catch (error) {
       console.error('Error saving shop:', error);
       toast({

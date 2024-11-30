@@ -96,6 +96,7 @@ export function ProductForm({
           description: "Failed to load shops. Please try again.",
           variant: "destructive",
         })
+        console.error(error)
       } finally {
         setIsLoadingShops(false)
       }
@@ -130,6 +131,7 @@ export function ProductForm({
         description: "Failed to save product",
         variant: "destructive",
       })
+      console.error(error)
     }
   }
 
