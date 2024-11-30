@@ -64,6 +64,7 @@ export default function SettingsPage() {
         description: "Failed to update settings",
         variant: "destructive",
       })
+      console.error(error);
     } finally {
       setIsLoading(false)
     }
