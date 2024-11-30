@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -298,7 +299,7 @@ export function ProductForm({
 
             <div className="aspect-square relative rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-800">
               {imagePreview ? (
-                <Image
+                <img
                   src={imagePreview}
                   alt="Preview"
                   fill

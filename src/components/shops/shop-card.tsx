@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Edit, Trash2 } from "lucide-react"
@@ -14,7 +15,7 @@ export function ShopCard({ shop, onDelete }: ShopCardProps) {
   return (
     <Card className="overflow-hidden">
       <div className="relative h-48">
-        <Image
+        <img
           src={shop.logo}
           alt={shop.name}
           fill

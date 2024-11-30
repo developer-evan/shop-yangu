@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import {
@@ -214,7 +215,7 @@ export function ProductTable({
               <TableRow key={product.id}>
                 <TableCell>
                   <div className="relative h-10 w-10">
-                    <Image
+                    <img
                       src={product.image}
                       alt={product.name}
                       fill

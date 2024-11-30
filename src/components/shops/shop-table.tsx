@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import {
   Table,
   TableBody,
@@ -77,10 +78,11 @@ export function ShopTable({ shops, onDelete, onEdit, onView }: ShopTableProps) {
               <TableRow key={shop.id}>
                 <TableCell>
                   <div className="relative h-10 w-10">
-                    <Image
+                    <img
                       src={shop.logo}
                       alt={shop.name}
-                      fill
+                      width={40}
+                      height={40}
                       className="rounded-md object-cover"
                       onError={(e) => {                        
                         (e.target as HTMLImageElement).src = "/placeholder.png";
