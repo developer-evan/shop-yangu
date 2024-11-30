@@ -1,0 +1,23 @@
+{
+  "shops": [
+    {
+      "name": "JK Saaffarisp",
+      "description": "evvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv",
+      "logo": "https://stem.murutechinc.com/images/3.jpg",
+      "id": "fb1d"
+    },
+    {
+      "id": "a47a",
+      "name": "JK Saaffarisllllllll",
+      "description": "lliiiiiiiiiiiiiiioooooooo",
+      "logo": "https://stem.murutechinc.com/images/3.jpg"
+    },
+    {
+      "id": "9b2e",
+      "name": "JK Saaffaris",
+      "description": "dcvvvvvvvvvvvvvvvvvv",
+      "logo": "https://stem.murutechinc.com/images/3.jpg"
+    }
+  ],
+  "products": []
+}
