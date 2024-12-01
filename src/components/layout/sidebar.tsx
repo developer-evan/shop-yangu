@@ -20,7 +20,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
   ]
 
   return (
-    <aside className="h-screen w-[240px] flex flex-col bg-white border-r">
+    <aside className="h-full w-[240px] flex flex-col bg-white border-r">
       {/* Logo Section */}
       <div className="flex h-16 items-center gap-2 px-6 border-b">
         <div className="h-7 w-7 rounded-md bg-indigo-600" />
