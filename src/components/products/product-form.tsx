@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -23,7 +24,6 @@ import {
 import { Product, Shop, shopApi } from "@/lib/api"
 import { useState, useEffect } from "react"
 import { useToast } from "@/hooks/use-toast"
-import Image from "next/image"
 import { Loader2 } from "lucide-react"
 
 // Form validation schema
@@ -298,10 +298,10 @@ export function ProductForm({
 
             <div className="aspect-square relative rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-800">
               {imagePreview ? (
-                <Image
+                <img
                   src={imagePreview}
                   alt="Preview"
-                  fill
+                  style={{ width: '100%', height: '100%', position: 'absolute' }}
                   className="object-cover rounded-lg"
                   onError={() => setImagePreview("")}
                 />

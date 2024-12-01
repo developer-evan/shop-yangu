@@ -1,5 +1,5 @@
 "use client";
-import { Home, ShoppingCartIcon, Package, Settings, LogOut, X } from 'lucide-react'
+import { Home, ShoppingCartIcon, Package, Settings, LogOut, X, User } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
@@ -16,6 +16,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
     { name: 'Shops', href: '/shops', icon: ShoppingCartIcon },
     { name: 'Products', href: '/products', icon: Package },
     { name: 'Settings', href: '/settings', icon: Settings },
+    {name: 'Profile', href: '/profile', icon: User}
   ]
 
   return (
@@ -36,7 +37,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
       </div>
 
       {/* Navigation Section */}
-      <nav className="flex-1 space-y-1 px-3 py-6 overflow-y-auto">
+      <nav className="flex-1 space-y-10 px-3 py-6 overflow-y-auto">
         {navigation.map((item) => {
           const isActive = pathname === item.href
           return (

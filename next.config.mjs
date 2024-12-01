@@ -1,15 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
+  typescript: {    
     ignoreBuildErrors: true,
   },
-    images: {
-      domains: ['stem.murutechinc.com'],  // Add this line
-    },
+    // images: {
+    //   domains: ['stem.murutechinc.com'],  // Add this line
+    // },
   }
   
   export default nextConfig
