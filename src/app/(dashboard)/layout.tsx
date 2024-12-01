@@ -36,7 +36,7 @@ export default function DashboardLayout({
           
           
           <div className="flex-1 flex flex-col ">
-            <div className="sticky top-0 z-40">
+            <div className="sticky top-0 z-40 h-full">
               <Header onMenuClick={() => setSidebarOpen(true)} />
             </div>
             
