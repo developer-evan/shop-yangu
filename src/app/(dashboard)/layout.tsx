@@ -18,7 +18,6 @@ export default function DashboardLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="flex h-screen">
-          {/* Mobile sidebar backdrop */}
           {sidebarOpen && (
             <div 
               className="fixed inset-0 bg-gray-800/60 lg:hidden z-40"
@@ -26,7 +25,7 @@ export default function DashboardLayout({
             />
           )}
 
-          {/* Sidebar */}
+        
           <div className={`
             fixed inset-y-0 z-50 
             lg:relative lg:flex
@@ -35,7 +34,7 @@ export default function DashboardLayout({
             <Sidebar onClose={() => setSidebarOpen(false)} />
           </div>
           
-          {/* Main content */}
+          
           <div className="flex-1 flex flex-col ">
             <div className="sticky top-0 z-40">
               <Header onMenuClick={() => setSidebarOpen(true)} />

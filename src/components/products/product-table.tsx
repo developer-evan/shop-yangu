@@ -12,7 +12,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Edit, Trash2, ArrowUpDown } from "lucide-react";
 import { Product, Shop } from "@/lib/api";
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import {
   Select,
@@ -218,7 +217,8 @@ export function ProductTable({
                     <img
                       src={product.image}
                       alt={product.name}
-                      fill
+                      width={40}
+                      height={40}
                       className="rounded-md object-cover"
                     />
                   </div>

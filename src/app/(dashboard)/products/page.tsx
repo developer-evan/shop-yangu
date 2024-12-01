@@ -95,7 +95,7 @@ export default function ProductsPage() {
     }
   };
 
-  const handleDeleteProduct = async (id: number) => {
+  const handleDeleteProduct = async (id: string) => {
     try {
       await productApi.delete(id);
       loadData();
@@ -131,7 +131,7 @@ export default function ProductsPage() {
     return matchesSearch && matchesShop;
   });
 
-  // Add this function to your ProductsPage component
+  
   const handleBulkDelete = async (ids: string[]) => {
     try {
       await Promise.all(ids.map((id) => productApi.delete(id)));

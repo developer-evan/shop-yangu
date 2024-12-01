@@ -24,7 +24,6 @@ import {
 import { Product, Shop, shopApi } from "@/lib/api"
 import { useState, useEffect } from "react"
 import { useToast } from "@/hooks/use-toast"
-import Image from "next/image"
 import { Loader2 } from "lucide-react"
 
 // Form validation schema
@@ -302,7 +301,7 @@ export function ProductForm({
                 <img
                   src={imagePreview}
                   alt="Preview"
-                  fill
+                  style={{ width: '100%', height: '100%', position: 'absolute' }}
                   className="object-cover rounded-lg"
                   onError={() => setImagePreview("")}
                 />

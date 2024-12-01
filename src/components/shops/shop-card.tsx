@@ -2,7 +2,6 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Edit, Trash2 } from "lucide-react"
-import Image from "next/image"
 import { Shop } from "@/lib/api"
 import Link from "next/link"
 
@@ -18,7 +17,7 @@ export function ShopCard({ shop, onDelete }: ShopCardProps) {
         <img
           src={shop.logo}
           alt={shop.name}
-          fill
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           className="object-cover"
         />
       </div>

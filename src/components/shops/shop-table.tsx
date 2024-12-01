@@ -10,7 +10,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Edit, Trash2, Eye, Search } from "lucide-react";
 import { Shop } from "@/lib/api";
-import Image from "next/image";
 import { Pagination } from "@/components/ui/pagination";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
